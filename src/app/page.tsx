@@ -1,20 +1,24 @@
-"USE CLIENT";
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
+  const [iframeSrc, setIframeSrc] = useState<string | null>(null);
+  const [isfrontVisible, setIsfrontVisible] = useState(false);
+  const [isbackVisible, setIsbackVisible] = useState(false);
+  const [isfullVisible, setIsfullVisible] = useState(false);
+  const [isdbVisible, setIsdbVisible] = useState(false);
+
   return (
     <>
       <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-        {/* Capa oscura para mejorar contraste */}
         <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
 
-        {/* Card con blur, borde blanco y sombra blanca */}
         <div
           className="relative z-10 w-full max-w-xl p-6 pt-12 bg-white/30 border-2 border-white rounded-lg 
                         shadow-lg backdrop-blur-md dark:bg-gray-800/30 text-center
                         drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]"
         >
-          {/* Imagen de perfil con borde blanco */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <Image
               className="w-20 h-20 rounded-full ring-4 ring-white"
@@ -40,122 +44,169 @@ export default function Home() {
       </div>
 
       <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-        {/* Capa oscura para mejorar contraste */}
         <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
 
-        {/* Card con blur, borde blanco y sombra blanca */}
         <div
-          className="relative z-10 w-5/6 max-w-xl h-4/5 p-6 bg-white/30 border-2 border-white rounded-lg 
+          className="base relative z-10 p-6 bg-white/30 border-2 border-white rounded-lg 
                         shadow-lg backdrop-blur-md dark:bg-gray-800/30 text-center
                         drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]"
         >
           <div>
             <h5 className="mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Tecnologias / Proyectos
+              Tecnologías / Proyectos
             </h5>
           </div>
           <div className="md:flex">
             <ul className="flex-column space-y space-y-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0">
               <li>
-                <a
-                  href="#"
-                  className="inline-flex items-center px-4 py-3 text-white bg-blue-700 rounded-lg active w-full dark:bg-blue-600"
-                  aria-current="page"
+                <button
+                  onClick={() => {
+                    setIsfrontVisible(!isfrontVisible);
+                    setIsbackVisible(false);
+                    setIsfullVisible(false);
+                    setIsdbVisible(false);
+                  }}
+                  className="inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-32 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
-                  <svg
-                    className="w-4 h-4 me-2 text-white"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
-                  </svg>
-                  Profile
-                </a>
+                  <img
+                    src="/front.svg"
+                    alt="Frontend Icon"
+                    className="w-4 h-4 me-2 invert"
+                  />
+                  Frontend
+                </button>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white"
+                <button
+                  onClick={() => {
+                    setIsfrontVisible(false);
+                    setIsbackVisible(!isbackVisible);
+                    setIsfullVisible(false);
+                    setIsdbVisible(false);
+                  }}
+                  className="inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-32 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
-                  <svg
-                    className="w-4 h-4 me-2 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 18 18"
-                  >
-                    <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
-                  </svg>
-                  Dashboard
-                </a>
+                  <img
+                    src="/Back.svg"
+                    alt="Backend Icon"
+                    className="w-4 h-4 me-2 invert"
+                  />
+                  Backend
+                </button>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white"
+                <button
+                  onClick={() => {
+                    setIsfrontVisible(false);
+                    setIsbackVisible(false);
+                    setIsfullVisible(!isfullVisible);
+                    setIsdbVisible(false);
+                  }}
+                  className="inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-32 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
-                  <svg
-                    className="w-4 h-4 me-2 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M18 7.5h-.423l-.452-1.09.3-.3a1.5 1.5 0 0 0 0-2.121L16.01 2.575a1.5 1.5 0 0 0-2.121 0l-.3.3-1.089-.452V2A1.5 1.5 0 0 0 11 .5H9A1.5 1.5 0 0 0 7.5 2v.423l-1.09.452-.3-.3a1.5 1.5 0 0 0-2.121 0L2.576 3.99a1.5 1.5 0 0 0 0 2.121l.3.3L2.423 7.5H2A1.5 1.5 0 0 0 .5 9v2A1.5 1.5 0 0 0 2 12.5h.423l.452 1.09-.3.3a1.5 1.5 0 0 0 0 2.121l1.415 1.413a1.5 1.5 0 0 0 2.121 0l.3-.3 1.09.452V18A1.5 1.5 0 0 0 9 19.5h2a1.5 1.5 0 0 0 1.5-1.5v-.423l1.09-.452.3.3a1.5 1.5 0 0 0 2.121 0l1.415-1.414a1.5 1.5 0 0 0 0-2.121l-.3-.3.452-1.09H18a1.5 1.5 0 0 0 1.5-1.5V9A1.5 1.5 0 0 0 18 7.5Zm-8 6a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z" />
-                  </svg>
-                  Settings
-                </a>
+                  <img
+                    src="/Fullstack.svg"
+                    alt="Fullstack Icon"
+                    className="w-4 h-4 me-2 invert"
+                  />
+                  Fullstack
+                </button>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white"
+                <button
+                  onClick={() => {
+                    setIsfrontVisible(false);
+                    setIsbackVisible(false);
+                    setIsfullVisible(false);
+                    setIsdbVisible(!isdbVisible);
+                  }}
+                  className="inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-32 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
-                  <svg
-                    className="w-4 h-4 me-2 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M7.824 5.937a1 1 0 0 0 .726-.312 2.042 2.042 0 0 1 2.835-.065 1 1 0 0 0 1.388-1.441 3.994 3.994 0 0 0-5.674.13 1 1 0 0 0 .725 1.688Z" />
-                    <path d="M17 7A7 7 0 1 0 3 7a3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h1a1 1 0 0 0 1-1V7a5 5 0 1 1 10 0v7.083A2.92 2.92 0 0 1 12.083 17H12a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h1a1.993 1.993 0 0 0 1.722-1h.361a4.92 4.92 0 0 0 4.824-4H17a3 3 0 0 0 3-3v-2a3 3 0 0 0-3-3Z" />
-                  </svg>
-                  Contact
-                </a>
+                  <img
+                    src="/DB.svg"
+                    alt="DB Icon"
+                    className="w-4 h-4 me-2 invert"
+                  />
+                  DB
+                </button>
               </li>
               <li>
-                <a className="inline-flex items-center px-4 py-3 text-gray-400 rounded-lg cursor-not-allowed bg-gray-50 w-full dark:bg-gray-800 dark:text-gray-500">
-                  <svg
-                    className="w-4 h-4 me-2 text-gray-400 dark:text-gray-500"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z" />
-                  </svg>
-                  Disabled
-                </a>
+                <button
+                  onClick={() =>
+                    window.open("https://github.com/Eridev-Bs", "_blank")
+                  }
+                  className="inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-32 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white"
+                >
+                  <img
+                    src="/github.svg"
+                    alt="GitHub Icon"
+                    className="w-4 h-4 me-2 invert"
+                  />
+                  GitHub
+                </button>
               </li>
             </ul>
-            <div className="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
+            <div className="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full h-auto">
               <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                Profile Tab
+                Proyectos
               </h3>
-              <p className="mb-2">
-                This is some placeholder content the Profile tab's associated
-                content, clicking another tab will toggle the visibility of this
-                one for the next.
+              <p className="mb-1">
+                Aquí podrás visualizar los proyectos que he realizado en base a
+                su tipo de proyecto.
               </p>
-              <p>
-                The tab JavaScript swaps classes to control the content
-                visibility and styling.
+              <p className="mb-5">
+                Una vez selecciones el proyecto, podrás visualizarlo en la
+                ventana inferior.
               </p>
+              {isfrontVisible && (
+                <div className="flex space-x-2 w-full h-auto items-center justify-center Frontend">
+                  <button className="w-20 h-20 bg-blue-600 text-white rounded-lg shadow-md border border-blue-700 hover:bg-blue-500 flex items-center justify-center transition-all">
+                    TetrisJs
+                  </button>
+                  <button className="w-20 h-20 bg-blue-600 text-white rounded-lg shadow-md border border-blue-700 hover:bg-blue-500 flex items-center justify-center transition-all">
+                    Astra
+                  </button>
+                  <button className="w-20 h-20 bg-blue-600 text-white rounded-lg shadow-md border border-blue-700 hover:bg-blue-500 flex items-center justify-center transition-all">
+                    Proyect Pinguino
+                  </button>
+                </div>
+              )}
+              {isbackVisible && (
+                <div className="flex space-x-2 w-full h-auto items-center justify-center Backend">
+                  <button className="w-20 h-20 bg-blue-600 text-white rounded-lg shadow-md border border-blue-700 hover:bg-blue-500 flex items-center justify-center transition-all">
+                    Astra
+                  </button>
+                  <button className="w-20 h-20 bg-blue-600 text-white rounded-lg shadow-md border border-blue-700 hover:bg-blue-500 flex items-center justify-center transition-all">
+                    Proyect Pinguino
+                  </button>
+                </div>
+              )}
+              {isfullVisible && (
+                <div className="flex space-x-2 w-full h-auto items-center justify-center Fullstack">
+                  <button className="w-20 h-20 bg-blue-600 text-white rounded-lg shadow-md border border-blue-700 hover:bg-blue-500 flex items-center justify-center transition-all">
+                    Proyect Pinguino
+                  </button>
+                </div>
+              )}
+              {isdbVisible && (
+                <div className="flex space-x-2 w-full h-auto items-center justify-center DB">
+                  <button className="w-20 h-20 bg-blue-600 text-white rounded-lg shadow-md border border-blue-700 hover:bg-blue-500 flex items-center justify-center transition-all">
+                    Proyect Pinguino
+                  </button>
+                </div>
+              )}
             </div>
           </div>
+
+          {/* Iframe dinámico */}
+          {iframeSrc && (
+            <iframe
+              src={iframeSrc}
+              width="100%"
+              height="300px"
+              className="mt-4 border-none rounded-lg"
+            ></iframe>
+          )}
         </div>
       </div>
     </>
