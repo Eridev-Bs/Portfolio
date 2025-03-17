@@ -53,14 +53,19 @@ export default function Home() {
   }, [activeIndex]);
 
   const handleScroll = (percentage: number) => {
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
     window.scrollTo({
       top: scrollHeight * percentage,
       behavior: "smooth",
     });
   };
 
-  const handleResponsiveScroll = (desktopPercentage: number, mobilePercentage: number) => {
+  const handleResponsiveScroll = (
+    desktopPercentage: number,
+    mobilePercentage: number
+  ) => {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const percentage = isMobile ? mobilePercentage : desktopPercentage;
     handleScroll(percentage);
@@ -825,14 +830,17 @@ export default function Home() {
               </p>
               <div className="shadow-inner bg-slate-950 dark:bg-slate-950 hover:bg-slate-800 dark:hover:bg-slate-800 rounded-lg mt-4 transition-colors duration-300">
                 <p className="py-4 text-2xl text-center text-white dark:text-white">
-                  <a href="mailto:benjaminsequeida95@gmail.com" className="hover:shadow-white">
-                    Contacta me
+                  <a
+                    href="mailto:benjaminsequeida95@gmail.com"
+                    className="hover:shadow-white"
+                  >
+                    Contacta me{" "}
+                    <img
+                      src="/mail.svg"
+                      alt="mail Icon"
+                      className="w-5 h-5 mx-auto dark:invert"
+                    />
                   </a>
-                  <img
-        src="/mail.svg"
-        alt="mail Icon"
-        className="w-5 h-5 mx-auto invert -mb-72 hidden md:block"
-      />
                 </p>
               </div>
             </div>
