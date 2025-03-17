@@ -828,6 +828,11 @@ export default function Home() {
                   <a href="mailto:benjaminsequeida95@gmail.com" className="hover:shadow-white">
                     Contacta me
                   </a>
+                  <img
+        src="/mail.svg"
+        alt="mail Icon"
+        className="w-20 h-20 mx-auto invert -mb-72 hidden md:block"
+      />
                 </p>
               </div>
             </div>
