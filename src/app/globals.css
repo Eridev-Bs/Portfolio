@@ -16,14 +16,91 @@
 
 body {
   color: var(--foreground);
-  background-image: url('/back.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   font-family: Arial, Helvetica, sans-serif;
+  position: relative; /* Para que el pseudo-elemento se posicione correctamente */
 }
 
-.base{
-  width: 70%;
-  height: 90%;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Opacidad leve */
+  z-index: -1; /* Mantiene la capa detrás del contenido */
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2; /* Mantiene el video detrás del pseudo-elemento */
+  background: url('/back.jpg') center center / cover no-repeat;
+}
+
+body video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Mantiene el video detrás del contenido */
+  pointer-events: none; /* Evita la interacción con el video */
+}
+
+.cardbt {
+  width: 100%;
+  height: 50%;
+}
+
+.interior {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glow {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.glow:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.glown {
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.glown:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+}
+
+.navbar-container {
+  background-color: rgba(0, 0, 0, 0.523); /* Fondo blanco con opacidad */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Borde blanco con opacidad */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para mostrar que está por encima de los demás */
+  border-radius: 9999px; /* Bordes redondeados */
+  padding: 0.5rem 1rem; /* Espaciado interno */
+  display: inline-flex; /* Ajustar al contenido */
+  align-items: center; /* Centrar verticalmente */
+}
+
+html {
+  scroll-behavior: smooth;
 }
