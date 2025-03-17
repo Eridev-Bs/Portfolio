@@ -831,7 +831,7 @@ export default function Home() {
                   <img
         src="/mail.svg"
         alt="mail Icon"
-        className="w-20 h-20 mx-auto invert -mb-72 hidden md:block"
+        className="w-5 h-5 mx-auto invert -mb-72 hidden md:block"
       />
                 </p>
               </div>
